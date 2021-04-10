@@ -14,6 +14,14 @@ class MyTestCase(unittest.TestCase):
                              1, 4
                          ]), 1)
 
+    def test_sample_two(self):
+        self.assertEqual(test([
+                             4, 2,
+                             1, 2,
+                             3, 2,
+                             1, 4
+                         ]), 0)
+
 
 if __name__ == '__main__':
     unittest.main()
