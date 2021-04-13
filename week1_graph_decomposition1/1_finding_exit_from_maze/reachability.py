@@ -4,8 +4,18 @@ import sys
 
 
 def reach(adj_list, x_arg, y_arg):
-    # write your code here
-    return 0
+    visited = [False for x in range(len(adj_list))]
+
+    def explore(v):
+        visited[v] = True
+        for index in adj_list[v]:
+            if visited[index] is not True:
+                explore(index)
+
+    if not visited[x_arg]:
+        explore(x_arg)
+
+    return 1 if visited[x_arg] is True and visited[y_arg] is True else 0
 
 
 def test(input_data):
