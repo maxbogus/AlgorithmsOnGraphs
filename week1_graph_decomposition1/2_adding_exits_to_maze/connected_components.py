@@ -5,7 +5,19 @@ import sys
 
 def number_of_components(adj_list):
     result = 0
-    #write your code here
+    visited = [False for x in range(len(adj_list))]
+
+    def explore(v):
+        visited[v] = True
+        for index in adj_list[v]:
+            if visited[index] is not True:
+                explore(index)
+
+    for item in range(len(adj_list)):
+        if not visited[item]:
+            explore(item)
+            result += 1
+
     return result
 
 
