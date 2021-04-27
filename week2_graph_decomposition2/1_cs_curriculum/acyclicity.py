@@ -4,6 +4,26 @@ import sys
 
 
 def acyclic(adj):
+    visited = [False] * len(adj)
+    rec_stack = [False] * len(adj)
+
+    def is_cyclic(v):
+        visited[v] = True
+        rec_stack[v] = True
+
+        for neighbour in adj[v]:
+            if not visited[neighbour]:
+                if is_cyclic(neighbour):
+                    return True
+            elif rec_stack[neighbour]:
+                return True
+        rec_stack[v] = False
+        return False
+
+    for node in range(len(adj)):
+        if not visited[node]:
+            if is_cyclic(node):
+                return 1
     return 0
 
 

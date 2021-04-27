@@ -25,6 +25,14 @@ class MyTestCase(unittest.TestCase):
             3, 5
         ]), 0)
 
+    def test_assign_two(self):
+        self.assertEqual(test([
+            4, 3,
+            1, 2,
+            3, 2,
+            4, 3
+        ]), 0)
+
 
 if __name__ == '__main__':
     unittest.main()
