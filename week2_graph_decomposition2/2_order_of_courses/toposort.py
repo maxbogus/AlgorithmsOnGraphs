@@ -3,16 +3,25 @@
 import sys
 
 
-def dfs(adj, used, order, x):
-    # write your code here
-    pass
+def dfs(adj_list, v, visited, stack):
+    visited[v] = True
+
+    for i in adj_list[v]:
+        if visited[i] == False:
+            dfs(adj_list, i, visited, stack)
+
+    stack.append(v)
 
 
-def toposort(adj):
-    used = [0] * len(adj)
-    order = []
-    # write your code here
-    return order
+def toposort(adj_list):
+    visited = [False] * len(adj_list)
+    stack = []
+
+    for i in range(len(adj_list)):
+        if visited[i] == False:
+            dfs(adj_list, i, visited, stack)
+
+    return stack[::-1]
 
 
 def test(input_data):
