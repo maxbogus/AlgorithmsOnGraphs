@@ -4,9 +4,25 @@ import sys
 import queue
 
 
-def distance(adj, s, t):
-    # write your code here
-    return -1
+def BFS(adj_list, S):
+    dist = [-1] * len(adj_list)
+    prev = [None] * len(adj_list)
+    dist[S] = 0
+    q = queue.Queue(maxsize=len(adj_list))
+    q.put(S)
+    while not q.empty():
+        u = q.get()
+        for node in adj_list[u]:
+            if dist[node] == -1:
+                q.put(node)
+                dist[node] = dist[u] + 1
+                prev[node] = u
+    return dist
+
+
+def distance(adj_list, s, t):
+    result = BFS(adj_list, s)
+    return result[t]
 
 
 def test(test_data):
