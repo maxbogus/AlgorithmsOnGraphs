@@ -28,6 +28,15 @@ class MyTestCase(unittest.TestCase):
             1, 5
         ]), 6)
 
+    def test_sample_three(self):
+        self.assertEqual(test_function([
+            3, 3,
+            1, 2, 7,
+            1, 3, 5,
+            2, 3, 2,
+            3, 2
+        ]), -1)
+
 
 if __name__ == '__main__':
     unittest.main()
